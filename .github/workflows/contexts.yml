@@ -1,0 +1,7 @@
+name: Contexts
+on: manual                   
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.actor }}" # ワークフローの実行者を記載
