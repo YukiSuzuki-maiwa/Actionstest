@@ -1,0 +1,14 @@
+name: Hello                                  # ワークフロー名
+on:
+  workflow_dispatch:                            # 手動実行でのイベント
+    inputs:                                     # 入力パラメータ定義
+      greeting:                                    # 入力パラメータ名
+        type: string                                 # データの型（文字列型）
+        default: Hello                            　   # 入力パラメータ省略時のデフォルト値
+        required: true                                 # 入力パラメータの指定が必須かどうか（ここではYES）
+        description: A cheerful word                   # 入力パラメータの概要
+jobs:                                        # ジョブ（ワークフローの実行単位）の定義
+  hello:                                        # ジョブID
+    runs-on: ubuntu-latest                        # Runnerをubuntuの最新版で実施　※ジョブの実行環境をプロビジョニング
+    steps:                                        # ステップ（ワークフローにおける処理の最小単位）の定義
+      - run: echo "${{ inputs.greeting }}"          # 入力パラメータ greeting の参照　※GitHub Actionsの独自記法
